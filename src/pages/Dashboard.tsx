@@ -49,7 +49,7 @@ const Dashboard: React.FC = () => {
     queryKey: ["tasks"],
     queryFn: async () => {
       const response = await axios.get(
-        "http://localhost:5000/tasks/all-tasks",
+        "https://qaptodo.onrender.com/tasks/all-tasks",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -63,7 +63,7 @@ const Dashboard: React.FC = () => {
   const handleSubmit = async (values: Omit<Task, "id" | "completed">) => {
     if (editingTaskId) {
       await axios.put(
-        `http://localhost:5000/tasks/update-task/${editingTaskId}`,
+        `https://qaptodo.onrender.com/tasks/update-task/${editingTaskId}`,
         values,
         {
           headers: {
@@ -74,7 +74,7 @@ const Dashboard: React.FC = () => {
       setEditingTaskId(null);
     } else {
       await axios.post(
-        "http://localhost:5000/tasks/create-task",
+        "https://qaptodo.onrender.com/tasks/create-task",
         { ...values, completed: false },
         {
           headers: {
@@ -88,7 +88,7 @@ const Dashboard: React.FC = () => {
   };
 
   const deleteTask = async (id: string) => {
-    await axios.delete(`http://localhost:5000/tasks/del-task/${id}`, {
+    await axios.delete(`https://qaptodo.onrender.com/tasks/del-task/${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -101,7 +101,7 @@ const Dashboard: React.FC = () => {
     if (task) {
       const values: Omit<Task, "id" | "completed"> = { ...task };
       await axios.put(
-        `http://localhost:5000/tasks/update-task/${taskId}`,
+        `https://qaptodo.onrender.com/tasks/update-task/${taskId}`,
         { ...values, completionStatus: !task.completionStatus },
         {
           headers: {

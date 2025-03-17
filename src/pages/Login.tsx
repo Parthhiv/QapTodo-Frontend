@@ -19,8 +19,8 @@ const Auth: React.FC = () => {
     setLoading(true);
     try {
       const api = isLogin
-        ? "http://localhost:5000/auth/login"
-        : "http://localhost:5000/auth/register";
+        ? "https://qaptodo.onrender.com/auth/login"
+        : "https://qaptodo.onrender.com/auth/register";
       const response = await axios.post(api, data);
       message.success(
         isLogin ? "Login successful!" : "Signup successful! You can log in now."
